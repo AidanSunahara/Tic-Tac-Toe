@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .game_height {
+      max-height: 600px;
+    }
+  }
+  @layer components {
+    .center {
+        text-align: center;
+    }
+  }
+ 
+  
