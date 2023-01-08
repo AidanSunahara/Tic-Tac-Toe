@@ -1,4 +1,3 @@
-// Jack's branch
 class BoardArr {
     // Member
     pieces;
