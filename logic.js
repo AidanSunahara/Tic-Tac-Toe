@@ -38,8 +38,7 @@ async function squareClicked(name) {
         turn = 'O';
         check[coord.x * 3 + coord.y] = 'X';
         if (didWin() === 'X') {
-            await new Promise(r => setTimeout(r, 1000));
-            alert("X wins!");
+            setTimeout(() => { alert("X wins!") }, 1);
         }
     }
     else {
@@ -47,8 +46,7 @@ async function squareClicked(name) {
         turn = 'X';
         check[coord.x * 3 + coord.y] = 'O';
         if (didWin() === 'O') {
-            await new Promise(r => setTimeout(r, 1000));
-            alert("O wins!");
+            setTimeout(() => { alert("O wins!") }, 1);
         }
 
     }
