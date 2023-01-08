@@ -46,6 +46,10 @@ var board = new BoardArr();
 
 
 async function squareClicked(name) {
+    if (turn === 'N') {
+        alert("Pieces cannot be placed after the game concludes.");
+        return;
+    }
     const img = document.createElement("img");
     console.log(name);
     const coord = idc(name);
@@ -62,6 +66,7 @@ async function squareClicked(name) {
         board.write(coord.x, coord.y, 'X');
         if (didWin() === 'X') {
             setTimeout(() => { alert("X wins!") }, 1);
+            turn = 'N';
         }
     }
     else {
@@ -70,6 +75,8 @@ async function squareClicked(name) {
         board.write(coord.x, coord.y, 'O');
         if (didWin() === 'O') {
             setTimeout(() => { alert("O wins!") }, 1);
+            turn = 'N';
+
         }
 
     }
@@ -79,6 +86,8 @@ async function squareClicked(name) {
 
     if (numTurns === 9 && didWin() === ' ') {
         alert("Draw");
+        turn = 'N';
+
     }
 }
 
