@@ -43,6 +43,24 @@ document.getElementById("bl").addEventListener("click", () => { squareClicked("b
 var turn = 'O';
 var numTurns = 0;
 var board = new BoardArr();
+var soundEnabled = true;
+
+function enableSound() {
+    soundEnabled = true;
+    alert("sound enabled");
+}
+
+function disableSound() {
+    soundEnabled = false;
+    alert("sound disabled");
+
+}
+
+function playSound(soundId) {
+    if (soundEnabled) {
+        // Play the sound effect
+    }
+}
 
 function resetGame() {
     alert("Game has been reset");
