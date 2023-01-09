@@ -53,7 +53,6 @@ function enableSound() {
 function disableSound() {
     soundEnabled = false;
     alert("sound disabled");
-
 }
 
 function playSound(soundId) {
