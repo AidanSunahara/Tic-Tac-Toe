@@ -39,10 +39,29 @@ document.getElementById("br").addEventListener("click", () => { squareClicked("b
 document.getElementById("bc").addEventListener("click", () => { squareClicked("bc") });
 document.getElementById("bl").addEventListener("click", () => { squareClicked("bl") });
 
-var turn = 'X';
+
+var turn = 'O';
 var numTurns = 0;
 var board = new BoardArr();
 
+function resetGame() {
+    alert("Game has been reset");
+    // Reset variables
+    for (let i = 0; i < 3; ++i) {
+        for (let j = 0; j < 3; ++j) {
+            board.write(i, j, ' ');
+        }
+    }
+    numTurns = 0;
+    turn = 'O';
+
+    images = document.getElementsByClassName("pieceImg");
+    const length = images.length;
+    for (let i = 0; i < length; ++i) {
+        images[0].remove();
+    }
+
+}
 
 async function squareClicked(name) {
     if (turn === 'N') {
@@ -50,6 +69,7 @@ async function squareClicked(name) {
         return;
     }
     const img = document.createElement("img");
+    img.classList += "pieceImg";
     console.log(name);
     const coord = idc(name);
     // Check if there is already a piece there
