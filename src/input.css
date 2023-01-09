@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .game_height {
+      max-height: 600px;
+    }
+  }
+  @layer components {
+    .thick_border {
+        border-style: solid;
+        border-width: 8px;
+    }
+  }
