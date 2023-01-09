@@ -1,5 +1,7 @@
 <!doctype html>
 <html data-theme="synthwave">
+<html data-theme="synthwave">
+
 
 <head>
   <title>Tic Tac Toe</title>
@@ -32,17 +34,20 @@
       </label>
     </nav>
     <!-- GAME -->
-    <div class="grid grid-cols-3 grid-rows-3 aspect-square game_height m-auto">
-      <span id="tl" class="border-b-2 border-r-2 border-cyan-500"></span>
-      <span id="tc" class="border-b-2 border-r-2 border-l-2 border-cyan-500"></span>
-      <span id="tr" class="border-l-2 border-b-2 border-cyan-500"></span>
-      <span id="cl" class="border-b-2 border-t-2 border-r-2 border-cyan-500"></span>
-      <span id="cc" class="border-2 border-cyan-500"></span>
-      <span id="cr" class="border-b-2 border-t-2 border-l-2 border-cyan-500"></span>
-      <span id="bl" class="border-t-2 border-r-2 border-cyan-500"></span>
-      <span id="bc" class="border-t-2 border-r-2 border-l-2 border-cyan-500"></span>
-      <span id="br" class="border-l-2 border-t-2 border-cyan-500"></span>
+    <div class="">
+      <div class="grid grid-cols-3 grid-rows-3 aspect-square game_height m-auto thick_border border-black rounded-3xl p-5 bg-white">
+        <span id="tl" class="border-b-2 border-r-2 border-cyan-500"></span>
+        <span id="tc" class="border-b-2 border-r-2 border-l-2 border-cyan-500"></span>
+        <span id="tr" class="border-l-2 border-b-2 border-cyan-500"></span>
+        <span id="cl" class="border-b-2 border-t-2 border-r-2 border-cyan-500"></span>
+        <span id="cc" class="border-2 border-cyan-500"></span>
+        <span id="cr" class="border-b-2 border-t-2 border-l-2 border-cyan-500"></span>
+        <span id="bl" class="border-t-2 border-r-2 border-cyan-500"></span>
+        <span id="bc" class="border-t-2 border-r-2 border-l-2 border-cyan-500"></span>
+        <span id="br" class="border-l-2 border-t-2 border-cyan-500"></span>
+      </div>
     </div>
+    
 
     <!-- SCORES -->
     <div class= "text-center flex flex-row justify-center space-x-5">
@@ -53,9 +58,10 @@
 
     <!-- BUTTON -->
     <div class="text-center">
-      <button class="bg-primary hover:scale-110 duration-300 text-white font-bold py-2 px-4 rounded shadow-xl">
+      <button id= "reset" class="bg-primary hover:scale-110 duration-300 text-white font-bold py-2 px-4 rounded shadow-xl">
         Reset
       </button>
+
     </div>
   
   </div>

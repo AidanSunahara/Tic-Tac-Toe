@@ -1,18 +1,22 @@
-//aidans branch
+class BoardArr {
+    // Member
+    pieces;
 
-document.getElementById("tr").addEventListener("click", () => { squareClicked("tr") });
-document.getElementById("tc").addEventListener("click", () => { squareClicked("tc") });
-document.getElementById("tl").addEventListener("click", () => { squareClicked("tl") });
-document.getElementById("cr").addEventListener("click", () => { squareClicked("cr") });
-document.getElementById("cc").addEventListener("click", () => { squareClicked("cc") });
-document.getElementById("cl").addEventListener("click", () => { squareClicked("cl") });
-document.getElementById("br").addEventListener("click", () => { squareClicked("br") });
-document.getElementById("bc").addEventListener("click", () => { squareClicked("bc") });
-document.getElementById("bl").addEventListener("click", () => { squareClicked("bl") });
-var turn = 'X';
-var numTurns = 0;
-var check = Array(9);
-check = check.fill(' ');
+    // Ctor
+    constructor() {
+        this.pieces = Array(9).fill(' ');
+    }
+
+    // Accessor
+    read(x, y) {
+        return this.pieces[x * 3 + y];
+    }
+
+    // Writer
+    write(x, y, letter) {
+        this.pieces[x * 3 + y] = letter;
+    }
+}
 class Coord {
     // Members
     x;
@@ -24,12 +28,52 @@ class Coord {
         this.y = param_y;
     }
 }
+
+document.getElementById("tr").addEventListener("click", () => { squareClicked("tr") });
+document.getElementById("tc").addEventListener("click", () => { squareClicked("tc") });
+document.getElementById("tl").addEventListener("click", () => { squareClicked("tl") });
+document.getElementById("cr").addEventListener("click", () => { squareClicked("cr") });
+document.getElementById("cc").addEventListener("click", () => { squareClicked("cc") });
+document.getElementById("cl").addEventListener("click", () => { squareClicked("cl") });
+document.getElementById("br").addEventListener("click", () => { squareClicked("br") });
+document.getElementById("bc").addEventListener("click", () => { squareClicked("bc") });
+document.getElementById("bl").addEventListener("click", () => { squareClicked("bl") });
+
+
+var turn = 'O';
+var numTurns = 0;
+var board = new BoardArr();
+
+function resetGame() {
+    alert("Game has been reset");
+    // Reset variables
+    for (let i = 0; i < 3; ++i) {
+        for (let j = 0; j < 3; ++j) {
+            board.write(i, j, ' ');
+        }
+    }
+    numTurns = 0;
+    turn = 'O';
+
+    images = document.getElementsByClassName("pieceImg");
+    const length = images.length;
+    for (let i = 0; i < length; ++i) {
+        images[0].remove();
+    }
+
+}
+
 async function squareClicked(name) {
+    if (turn === 'N') {
+        alert("Pieces cannot be placed after the game concludes.");
+        return;
+    }
     const img = document.createElement("img");
+    img.classList += "pieceImg";
     console.log(name);
     const coord = idc(name);
     // Check if there is already a piece there
-    if (check[coord.x * 3 + coord.y] !== ' ') {
+    if (board.read(coord.x, coord.y) !== ' ') {
         alert("There is already a piece there d*****s!");
         return;
     }
@@ -38,17 +82,20 @@ async function squareClicked(name) {
     if (turn === 'X') {
         img.src = "/images/x.png";
         turn = 'O';
-        check[coord.x * 3 + coord.y] = 'X';
+        board.write(coord.x, coord.y, 'X');
         if (didWin() === 'X') {
             setTimeout(() => { alert("X wins!") }, 1);
+            turn = 'N';
         }
     }
     else {
         img.src = "/images/o.png";
         turn = 'X';
-        check[coord.x * 3 + coord.y] = 'O';
+        board.write(coord.x, coord.y, 'O');
         if (didWin() === 'O') {
             setTimeout(() => { alert("O wins!") }, 1);
+            turn = 'N';
+
         }
 
     }
@@ -58,13 +105,15 @@ async function squareClicked(name) {
 
     if (numTurns === 9 && didWin() === ' ') {
         alert("Draw");
+        turn = 'N';
+
     }
 }
 
 // Check row
 function checkRow(row) {
-    if ((check[0 * 3 + row] === check[1 * 3 + row]) && (check[1 * 3 + row] === check[2 * 3 + row])) {
-        return check[row];
+    if ((board.read(0, row) === board.read(1, row)) && (board.read(1, row) === board.read(2, row))) {
+        return board.read(0, row);
     } else {
         return ' ';
     }
@@ -72,8 +121,8 @@ function checkRow(row) {
 
 // Check col
 function checkCol(col) {
-    if ((check[0 + col * 3] === check[1 + col * 3]) && (check[1 + col * 3] === check[2 + col * 3])) {
-        return check[col * 3];
+    if ((board.read(col, 0) === board.read(col, 1)) && (board.read(col, 1) === board.read(col, 2))) {
+        return board.read(col, 0);
     } else {
         return ' ';
     }
@@ -81,8 +130,8 @@ function checkCol(col) {
 
 // Check Down diag
 function checkDownDiag() {
-    if ((check[0 * 3 + 0] === check[1 * 3 + 1]) && (check[1 * 3 + 1] === check[2 * 3 + 2])) {
-        return check[0 * 3 + 0];
+    if ((board.read(0, 0) === board.read(1, 1)) && (board.read(1, 1) === board.read(2, 2))) {
+        return board.read(0, 0);
     } else {
         return ' ';
     }
@@ -90,8 +139,8 @@ function checkDownDiag() {
 
 // Check up diag
 function checkUpDiag() {
-    if ((check[0 * 3 + 2] === check[1 * 3 + 1]) && (check[1 * 3 + 1] === check[2 * 3 + 0])) {
-        return check[0 * 3 + 2];
+    if ((board.read(0, 2) === board.read(1, 1)) && (board.read(1, 1) === board.read(2, 0))) {
+        return board.read(0, 2);
     } else {
         return ' '
     }
