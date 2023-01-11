@@ -1,0 +1,86 @@
+<!doctype html>
+<html data-theme="synthwave">
+
+
+<head>
+  <title>Tic Tac Toe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/output.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <audio id="musik" src="20-27-40-nightcore-on-trn-arruko-lyrics-youtube.mp3" controls autoplay loop>Music</audio>
+
+  <!-- LAYOUT -->
+  <div class="mx-auto max-w-5xl lg:px-0 mt-10 space-y-7">
+    <nav
+      class="flex flex-row justify-between p-4 bg-base-300 items-center font-bold border-2 border-cyan-500 shadow-2xl rounded-2xl">
+      <div>
+        Tic Tac Toe
+      </div>
+      <label class=" w-6 h-6 swap">
+
+        <!-- this hidden checkbox controls the state -->
+        <input type="checkbox" checked />
+
+        <!-- volume off icon -->
+        <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+          onclick="enableSound()">
+          <path
+            d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+        </svg>
+
+        <!-- volume on icon -->
+        <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+          onclick="disableSound()">
+          <path
+            d="M3,9H7L12,4V20L7,15H3V9M16.59,12L14,9.41L15.41,8L18,10.59L20.59,8L22,9.41L19.41,12L22,14.59L20.59,16L18,13.41L15.41,16L14,14.59L16.59,12Z" />
+        </svg>
+
+      </label>
+    </nav>
+    <!-- GAME -->
+    <div class="">
+      <div
+        class="grid grid-cols-3 grid-rows-3 aspect-square game_height m-auto thick_border border-black rounded-3xl p-5 bg-white">
+        <span onclick="playSound('place')" id="tl" class="border-b-2 border-r-2 border-cyan-500"></span>
+        <span onclick="playSound('place')" id="tc" class="border-b-2 border-r-2 border-l-2 border-cyan-500"></span>
+        <span onclick="playSound('place')" id="tr" class="border-l-2 border-b-2 border-cyan-500"></span>
+        <span onclick="playSound('place')" id="cl" class="border-b-2 border-t-2 border-r-2 border-cyan-500"></span>
+        <span onclick="playSound('place')" id="cc" class="border-2 border-cyan-500"></span>
+        <span onclick="playSound('place')" id="cr" class="border-b-2 border-t-2 border-l-2 border-cyan-500"></span>
+        <span onclick="playSound('place')" id="bl" class="border-t-2 border-r-2 border-cyan-500"></span>
+        <span onclick="playSound('place')" id="bc" class="border-t-2 border-r-2 border-l-2 border-cyan-500"></span>
+        <span onclick="playSound('place')" id="br" class="border-l-2 border-t-2 border-cyan-500"></span>
+      </div>
+    </div>
+
+
+    <!-- SCORES -->
+    <div class="text-center flex flex-row justify-center space-x-5">
+      <div id="naughtWins">Naught Wins: 0</div>
+      <div id="draws">Draws: 0</div>
+      <div id="crossWins">Cross Wins: 0</div>
+    </div>
+
+    <!-- BUTTON -->
+    <div class="text-center">
+      <button onclick="resetGame()"
+        class="bg-primary hover:scale-110 duration-300 text-white font-bold py-2 px-4 rounded shadow-xl">
+        Reset
+      </button>
+      <button onclick="resetScores()"
+        class="bg-primary hover:scale-110 duration-300 text-white font-bold py-2 px-4 rounded shadow-xl">
+        Reset Scores
+      </button>
+
+    </div>
+
+  </div>
+  <script src="logic.js"></script>
+</body>
+
+</html>
