@@ -45,10 +45,15 @@ var numTurns = 0;
 var board = new BoardArr();
 var soundEnabled = true;
 
+var naughtWins = 0;
+var crossWins = 0;
+var draws = 0;
+
 const place = new Audio("sounds/tttplace.mp3");
 const win = new Audio("sounds/tttwin.mp3");
 const tie = new Audio("sounds/ttttie.mp3");
 var music = document.getElementById("musik");
+
 
 var places = Array(9);
 for (var i = 0; i < 9; ++i) {
@@ -112,6 +117,15 @@ function resetGame() {
 
 }
 
+function resetScores() {
+    crossWins = 0;
+    document.getElementById("crossWins").innerText = "Cross Wins: " + crossWins;
+    naughtWins = 0;
+    document.getElementById("naughtWins").innerText = "Naught Wins: " + naughtWins;
+    draws = 0;
+    document.getElementById("draws").innerText = "Draws: " + draws;
+}
+
 async function squareClicked(name) {
     if (turn === 'N') {
         alert("Pieces cannot be placed after the game concludes.");
@@ -138,6 +152,9 @@ async function squareClicked(name) {
             win.play();
             setTimeout(() => { alert("X wins!") }, 1);
             turn = 'N';
+
+            crossWins += 1;
+            document.getElementById("crossWins").innerText = "Cross Wins: " + crossWins;
         }
     }
     else {
@@ -149,6 +166,9 @@ async function squareClicked(name) {
             win.play();
             setTimeout(() => { alert("O wins!") }, 1);
             turn = 'N';
+
+            naughtWins += 1;
+            document.getElementById("naughtWins").innerText = "Naught Wins: " + naughtWins;
 
         }
 
@@ -163,6 +183,8 @@ async function squareClicked(name) {
         alert("Draw");
         turn = 'N';
 
+        draws += 1;
+        document.getElementById("draws").innerText = "Draws: " + draws;
     }
 }
 
