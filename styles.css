@@ -37,3 +37,11 @@ button:active {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.big {
+  font-family: 'Comic Sans MS';
+  font-size: xx-large;
+  font-weight: bolder;
+  font-style: italic;
+  text-decoration: underline;
+}

@@ -34,69 +34,68 @@ const epics = [
   "ultrashinjin",
   "Carrydax",
   "TheFakeJew",
-  "Obama"
+  "Obama",
+  "Lil Poon"
 ];
 
 const legendaries = [
   "UltrazRath",
   "DatManOP",
   "Nick5Ever",
-  "Player"
+  "Player",
+  "Lil Pdawwg"
 ];
 
 const mythics = [
   "Jarred Emilio Welsh",
+  "Liam Hiroshi Harambe Howard III III V"
 ];
 
-var allNames = Array();
+const secretRares = [
+  "The Jozoth 12"
+];
 
-commons.forEach(element => {
-  allNames.push(element);
-  allNames.push(element);
-  allNames.push(element);
-  allNames.push(element);
-  allNames.push(element);
-  allNames.push(element);
-});
-
-rares.forEach(element => {
-  allNames.push(element);
-  allNames.push(element);
-  allNames.push(element);
-  allNames.push(element);
-});
-
-epics.forEach(element => {
-  allNames.push(element);
-  allNames.push(element);
-  allNames.push(element);
-});
-
-legendaries.forEach(element => {
-  allNames.push(element);
-  allNames.push(element);
-})
-
-mythics.forEach(element => {
-  allNames.push(element);
-});
+const commonChance = 0.6;          // 0.6
+const rareChance = 0.3;            // 0.9
+const epicChance = 0.07;           // 0.97
+const legendaryChance = 0.02       // 0.99
+const mythicChance = 0.009         // 0.999
+const secretRareChance = 0.001     // 1
 
 var rand = Math.random();
-rand *= allNames.length;
-rand = Math.floor(rand);
+var theName;
 
-const theName = allNames[rand];
+function pickRandFrom(arr)
+{
+  var ran = Math.random();
+  ran *= arr.length;
+  ran = Math.floor(ran);
+  return arr[ran];
+}
+
+if (rand < commonChance)
+{ // Common
+  theName = pickRandFrom(commons);
+} else if (rand < (commonChance + rareChance))
+{ // Rare
+  theName = pickRandFrom(rares);
+  document.getElementById("soTarget").style = "color: aqua";
+} else if (rand < (commonChance + rareChance + epicChance))
+{ // Epic
+  theName = pickRandFrom(epics);
+  document.getElementById("soTarget").style = "color: #ad73ff";
+} else if (rand < (commonChance + rareChance + epicChance + legendaryChance))
+{ // Legendary
+  theName = pickRandFrom(legendaries);
+  document.getElementById("soTarget").style = "color: orange";
+} else if (rand < (commonChance + rareChance + epicChance + legendaryChance + mythicChance))
+{ // Mythic
+  theName = pickRandFrom(mythics);
+  document.getElementById("soTarget").className = "rainbow";
+} else
+{ // Secret Rare
+  theName = pickRandFrom(secretRares);
+  document.getElementById("soTarget").className = "rainbow big";
+}
 
 document.getElementById("soTarget").innerText = theName;
-if (rares.includes(theName)) {
-  document.getElementById("soTarget").style = "color: aqua";
-}
-if (epics.includes(theName)) {
-  document.getElementById("soTarget").style = "color: #ad73ff";
-}
-if (legendaries.includes(theName)) {
-  document.getElementById("soTarget").style = "color: orange";
-}
-if (mythics.includes(theName)) {
-  document.getElementById("soTarget").className = "rainbow";
-}
