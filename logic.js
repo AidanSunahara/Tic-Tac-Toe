@@ -98,7 +98,6 @@ function playSound(soundId) {
 }
 
 function resetGame() {
-    alert("Game has been reset");
     // Reset variables
     for (let i = 0; i < 3; ++i) {
         for (let j = 0; j < 3; ++j) {
@@ -113,7 +112,7 @@ function resetGame() {
     for (let i = 0; i < length; ++i) {
         images[0].remove();
     }
-
+    document.getElementById("outcome").innerHTML = "";
 }
 
 function resetScores() {
@@ -123,6 +122,7 @@ function resetScores() {
     document.getElementById("naughtWins").innerText = "Naught Wins: " + naughtWins;
     draws = 0;
     document.getElementById("draws").innerText = "Draws: " + draws;
+    document.getElementById("outcome").innerHTML = "";
 }
 
 async function squareClicked(name) {
@@ -149,7 +149,7 @@ async function squareClicked(name) {
             stopAllSounds();
 
             win.play();
-            setTimeout(() => { alert("X wins!") }, 1);
+            setTimeout(() => { document.getElementById("outcome").innerHTML = "Cross Wins!", 1000 });
             turn = 'N';
 
             crossWins += 1;
@@ -163,7 +163,7 @@ async function squareClicked(name) {
         if (didWin() === 'O') {
             stopAllSounds();
             win.play();
-            setTimeout(() => { alert("O wins!") }, 1);
+            setTimeout(() => { document.getElementById("outcome").innerHTML = "Naught Wins!", 1000 });
             turn = 'N';
 
             naughtWins += 1;
@@ -179,7 +179,7 @@ async function squareClicked(name) {
     if (numTurns === 9 && didWin() === ' ') {
         stopAllSounds();
         tie.play();
-        alert("Draw");
+        setTimeout(() => { document.getElementById("outcome").innerHTML = "Cats game", 1000 });
         turn = 'N';
 
         draws += 1;
