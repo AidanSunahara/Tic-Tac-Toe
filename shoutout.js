@@ -94,10 +94,12 @@ if (rand < commonChance)
 { // Mythic
   theName = pickRandFrom(mythics);
   document.getElementById("soTarget").className = "rainbow";
+  alert("Mythic found!");
 } else
 { // Secret Rare
   theName = pickRandFrom(secretRares);
   document.getElementById("soTarget").className = "rainbow big";
+  alert("Secret Rare found!");
 }
 
 document.getElementById("soTarget").innerText = theName;
