@@ -7,12 +7,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/dist/output.css" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet">
 
 </head>
 
 <body>
-  <audio id="musik" src="20-27-40-nightcore-on-trn-arruko-lyrics-youtube.mp3" controls autoplay loop>Music</audio>
+  <audio id="musik" src="20-27-40-nightcore-on-trn-arruko-lyrics-youtube.mp3" controls loop>Music</audio>
+  <script>
+    document.getElementById("musik").volume = 0.01;
+    console.log("Poop");
+  </script>
 
   <!-- LAYOUT -->
   <div class="mx-auto max-w-5xl lg:px-0 mt-10 space-y-7">

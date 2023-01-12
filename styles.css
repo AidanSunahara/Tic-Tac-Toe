@@ -1,0 +1,33 @@
+body {
+  background-color: purple;
+  text-align: center;
+  color: white;
+}
+
+h1 {
+  color: white;
+  font-family: 'Comic Sans MS';
+}
+
+button {
+  font-size: 25px;
+  border: none;
+  background-color: rgb(186, 245, 255);
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: padding 1s, border-radius 1s, font-size 1s, background-color .5s;
+  align-items: center;
+
+}
+
+button:hover {
+  background-color: rgb(144, 202, 212);
+  cursor: pointer;
+  padding: 20px 40px;
+  border-radius: 60px;
+  font-size: 50px;
+}
+
+button:active {
+  background-color: rgb(112, 167, 177);
+}

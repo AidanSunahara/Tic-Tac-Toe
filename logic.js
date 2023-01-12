@@ -52,7 +52,6 @@ var draws = 0;
 const place = new Audio("sounds/tttplace.mp3");
 const win = new Audio("sounds/tttwin.mp3");
 const tie = new Audio("sounds/ttttie.mp3");
-var music = document.getElementById("musik");
 
 
 var places = Array(9);
