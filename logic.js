@@ -43,6 +43,59 @@ document.getElementById("bl").addEventListener("click", () => { squareClicked("b
 var turn = 'O';
 var numTurns = 0;
 var board = new BoardArr();
+var soundEnabled = true;
+
+var naughtWins = 0;
+var crossWins = 0;
+var draws = 0;
+
+const place = new Audio("sounds/tttplace.mp3");
+const win = new Audio("sounds/tttwin.mp3");
+const tie = new Audio("sounds/ttttie.mp3");
+
+
+var places = Array(9);
+for (var i = 0; i < 9; ++i) {
+    places[i] = document.createElement("audio");
+    places[i].src = "sounds/tttplace.mp3";
+}
+function stopAllSounds() {
+    for (var i = 0; i < 9; ++i) {
+        places[i].pause();
+        places[i].currentTime = 0;
+    }
+}
+
+function enableSound() {
+    soundEnabled = true;
+    alert("sound enabled");
+}
+
+function disableSound() {
+    soundEnabled = false;
+    alert("sound disabled");
+}
+
+function playSound(soundId) {
+    if (soundEnabled) {
+        switch (soundId) {
+            case "place":
+                if (turn != 'N') {
+                    places[numTurns].play();
+                }
+                break;
+            case "tie":
+                tie.play();
+                break;
+            case "win":
+                win.play();
+                break;
+            default:
+                alert("Unknown sound");
+                throw "Unknown sound";
+        }
+    }
+}
 
 function resetGame() {
     alert("Game has been reset");
@@ -61,6 +114,15 @@ function resetGame() {
         images[0].remove();
     }
 
+}
+
+function resetScores() {
+    crossWins = 0;
+    document.getElementById("crossWins").innerText = "Cross Wins: " + crossWins;
+    naughtWins = 0;
+    document.getElementById("naughtWins").innerText = "Naught Wins: " + naughtWins;
+    draws = 0;
+    document.getElementById("draws").innerText = "Draws: " + draws;
 }
 
 async function squareClicked(name) {
@@ -84,8 +146,14 @@ async function squareClicked(name) {
         turn = 'O';
         board.write(coord.x, coord.y, 'X');
         if (didWin() === 'X') {
+            stopAllSounds();
+
+            win.play();
             setTimeout(() => { alert("X wins!") }, 1);
             turn = 'N';
+
+            crossWins += 1;
+            document.getElementById("crossWins").innerText = "Cross Wins: " + crossWins;
         }
     }
     else {
@@ -93,8 +161,13 @@ async function squareClicked(name) {
         turn = 'X';
         board.write(coord.x, coord.y, 'O');
         if (didWin() === 'O') {
+            stopAllSounds();
+            win.play();
             setTimeout(() => { alert("O wins!") }, 1);
             turn = 'N';
+
+            naughtWins += 1;
+            document.getElementById("naughtWins").innerText = "Naught Wins: " + naughtWins;
 
         }
 
@@ -104,9 +177,13 @@ async function squareClicked(name) {
 
 
     if (numTurns === 9 && didWin() === ' ') {
+        stopAllSounds();
+        tie.play();
         alert("Draw");
         turn = 'N';
 
+        draws += 1;
+        document.getElementById("draws").innerText = "Draws: " + draws;
     }
 }
 

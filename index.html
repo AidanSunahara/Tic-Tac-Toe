@@ -2,71 +2,28 @@
 <html data-theme="synthwave">
 <html data-theme="synthwave">
 
+<html>
 
 <head>
-  <title>Tic Tac Toe</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/dist/output.css" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet">
-
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>TTT Landing Page</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  
-  <!-- LAYOUT -->
-  <div class="mx-auto max-w-5xl lg:px-0 mt-10 space-y-7">
-    <nav class="flex flex-row justify-between p-4 bg-base-300 items-center font-bold border-2 border-cyan-500 shadow-2xl rounded-2xl">
-      <div>
-        Tic Tac Toe
-      </div>
-      <label class=" w-6 h-6 swap">
-    
-        <!-- this hidden checkbox controls the state -->
-        <input type="checkbox" />
-        
-        <!-- volume on icon -->
-        <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z"/></svg>
-        
-        <!-- volume off icon -->
-        <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M3,9H7L12,4V20L7,15H3V9M16.59,12L14,9.41L15.41,8L18,10.59L20.59,8L22,9.41L19.41,12L22,14.59L20.59,16L18,13.41L15.41,16L14,14.59L16.59,12Z"/></svg>
-        
-      </label>
-    </nav>
-    <!-- GAME -->
-    <div class="">
-      <div class="grid grid-cols-3 grid-rows-3 aspect-square game_height m-auto thick_border border-black rounded-3xl p-5 bg-white">
-        <span id="tl" class="border-b-2 border-r-2 border-cyan-500"></span>
-        <span id="tc" class="border-b-2 border-r-2 border-l-2 border-cyan-500"></span>
-        <span id="tr" class="border-l-2 border-b-2 border-cyan-500"></span>
-        <span id="cl" class="border-b-2 border-t-2 border-r-2 border-cyan-500"></span>
-        <span id="cc" class="border-2 border-cyan-500"></span>
-        <span id="cr" class="border-b-2 border-t-2 border-l-2 border-cyan-500"></span>
-        <span id="bl" class="border-t-2 border-r-2 border-cyan-500"></span>
-        <span id="bc" class="border-t-2 border-r-2 border-l-2 border-cyan-500"></span>
-        <span id="br" class="border-l-2 border-t-2 border-cyan-500"></span>
-      </div>
-    </div>
-    
+  <h1>gamingerino2</h1>
+  <a href="local.html">
+    <button>Local</button>
+  </a>
+  <a href="online.html">
+    <button>Online</button>
+  </a>
+  <p>Shoutout to Thomas</p>
+</body>
 
-    <!-- SCORES -->
-    <div class= "text-center flex flex-row justify-center space-x-5">
-      <div>Player 1: </div>
-      <div>Tie: </div>
-      <div>Player 2: </div>
-    </div>
-
-    <!-- BUTTON -->
-    <div class="text-center">
-      <button id= "reset" class="bg-primary hover:scale-110 duration-300 text-white font-bold py-2 px-4 rounded shadow-xl">
-        Reset
-      </button>
-
-    </div>
-  
-  </div>
- 
-  <script src="logic.js"></script>
 </body>
 
 </html>
