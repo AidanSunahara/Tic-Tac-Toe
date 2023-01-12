@@ -1,5 +1,5 @@
 body {
-  background-color: purple;
+  background-color: #334552;
   text-align: center;
   color: white;
 }
@@ -30,4 +30,10 @@ button:hover {
 
 button:active {
   background-color: rgb(112, 167, 177);
+}
+
+.rainbow {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
