@@ -1,26 +1,48 @@
 var buffse = document.getElementById("buffse");
 
-var angle = 0;
+setInterval(buffspin, 10)
 
-setInterval(buffspin, 10);
+var angle = 0;
 
 function buffspin()
 {
-  angle += 1;
   var theta = angle * Math.PI / 180;
 
-  const W = 300;
+  var subangle = angle;
+
+  if (angle >= 270)
+  {
+    subangle = (270 - (subangle - 270));
+  }
+  if (angle >= 180)
+  {
+    subangle = (180 - (subangle - 180));
+  }
+  if (angle >= 90)
+  {
+    subangle = (90 - (subangle - 90));
+  }
+
+  var theta = subangle * Math.PI / 180;
+
+
+  const W = 150;
   const H = (4 / 3) * W;
-  const a = H - (H / Math.cos(theta))
-  const b = a / Math.tan(theta);
-  const c = Math.sqrt(a * a + b * b);
-  const e = H * Math.tan(theta);
-  const d = (W - e - c) * Math.tan(theta);
+  const r = Math.sqrt(H * H + W * W);
+  const del = Math.atan(W / H) - theta;
+  const ry = r * Math.cos(del);
+  var offset = ry - H;
+
+
+
 
 
   buffse.style =
-    ` margin-top: 45px; width: 300px; transform: rotate(${angle}deg); position: fixed; bottom: ${d}px; border: 2px solid red; `
-  if (angle === 360)
+    ` margin-top: 45px; width: 300px; transform: rotate(${angle}deg); position: fixed; bottom: ${offset}px; `
+
+  angle += 1;
+
+  if (angle === 359)
   {
     angle = 0;
   }
